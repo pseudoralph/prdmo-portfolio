@@ -1,14 +1,10 @@
 export const STYLES = {
   header: {
     boxSizing: 'border-box',
-    // display: 'grid',
-    // gridTemplateColumns: 'repeat(4,1fr)',
-    boxShadow: 'rgb(209, 209, 209) 0px 1px 2px 0px',
     position: 'sticky',
     width: '100vw',
-    backgroundColor: '#e8e8e8',
-    // height: '3.3em',
-    padding: '.3em',
+    backgroundColor: 'rgb(78, 78, 78)',
+    padding: '1.3em 0 1em',
     marginBottom: '1em'
   },
   headings: {
@@ -18,10 +14,19 @@ export const STYLES = {
     listStyleType: 'none'
   },
   section: {
+    cursor: 'pointer',
     display: 'inline',
-    margin: '0 2em'
+    margin: '0 .33em',
+    padding: '.8em 2em'
+  },
+  sectionHover: {
+    background: 'rgb(86, 86, 86)'
   },
   sectionActive: {
-    border: '2px solid black'
+    borderBottom: '2px solid black'
+  },
+  sectionATag: {
+    color: 'white',
+    textDecoration: 'none'
   }
 };
