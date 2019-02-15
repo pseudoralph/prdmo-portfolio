@@ -1,18 +1,24 @@
 import React from 'react';
+import { STYLES } from './styles';
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.styles = {
-      block: {
-        width: '100vw',
-        backgroundColor: '#e8e8e8',
-        height: '100px'
-      }
-    };
+
+    this.sectionHeadings = ['About', 'Projects', 'Blog', 'Contact'];
   }
   render() {
-    return <div style={this.styles.block}>Header works</div>;
+    return (
+      <div style={STYLES.header}>
+        <ul style={STYLES.headings}>
+          {this.sectionHeadings.map((section, i) => (
+            <li key={i} style={STYLES.section}>
+              {section}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
   }
 }
 
