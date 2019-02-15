@@ -4,11 +4,29 @@ import PropTypes from 'prop-types';
 class Hover extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+
+    this.state = { hover: false };
   }
 
+  toggleHover = () => {
+    this.setState(state => {
+      return { hover: state.hover ? false : true };
+    });
+    console.log(this.state.hover);
+    // console.log(this.state);
+  };
+
   render() {
-    return <div style={{ display: 'inline' }}>{this.props.children}</div>;
+    return (
+      <div
+        onMouseEnter={this.toggleHover}
+        onMouseLeave={this.toggleHover}
+        style={{ display: 'inline' }}
+      >
+        {this.state.hover ? '>' : ''}
+        {this.props.children}
+      </div>
+    );
   }
 }
 

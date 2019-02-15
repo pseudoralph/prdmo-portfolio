@@ -20,7 +20,7 @@ class Header extends React.Component {
       <div style={STYLES.header} className="header">
         <ul style={STYLES.headings} className="headings">
           {this.sectionHeadings.map((section, i) => (
-            <Hover isMouseOver={'yes'} key={i}>
+            <Hover key={i}>
               <li style={{ ...STYLES.section }} className="section">
                 <Link style={STYLES.sectionATag} to={section.path}>
                   {section.heading}
