@@ -14,18 +14,21 @@ export const STYLES = {
     listStyleType: 'none'
   },
   section: {
-    cursor: 'pointer',
     display: 'inline',
-    margin: '0 .33em',
+    margin: '.33em'
+  },
+  noHover: {
+    cursor: 'pointer',
+    display: 'inherit',
     padding: '.8em 2em'
   },
-  sectionHover: {
+  withHover: {
     background: 'rgb(86, 86, 86)'
   },
   sectionActive: {
     borderBottom: '2px solid black'
   },
-  sectionATag: {
+  sectionLink: {
     color: 'white',
     textDecoration: 'none'
   }

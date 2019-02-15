@@ -5,9 +5,7 @@ import { STYLES } from './styles';
 class Hover extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = { hover: false };
-
     this.toggleHover = this.toggleHover.bind(this);
   }
 
@@ -24,8 +22,8 @@ class Hover extends React.Component {
         onMouseLeave={this.toggleHover}
         style={
           this.state.hover
-            ? { ...STYLES.section, ...STYLES.sectionHover }
-            : { ...STYLES.section }
+            ? { ...STYLES.noHover, ...STYLES.withHover }
+            : { ...STYLES.noHover }
         }
       >
         {this.props.children}
@@ -35,7 +33,7 @@ class Hover extends React.Component {
 }
 
 Hover.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.string
 };
 
 export default Hover;

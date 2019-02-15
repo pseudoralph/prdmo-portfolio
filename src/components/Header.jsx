@@ -20,13 +20,11 @@ class Header extends React.Component {
       <div style={STYLES.header} className="header">
         <ul style={STYLES.headings} className="headings">
           {this.sectionHeadings.map((section, i) => (
-            <Hover key={i}>
-              <li style={{ ...STYLES.section }} className="section">
-                <Link style={STYLES.sectionATag} to={section.path}>
-                  {section.heading}
-                </Link>
+            <Link style={STYLES.sectionLink} to={section.path} key={i}>
+              <li style={STYLES.section}>
+                <Hover>{section.heading}</Hover>
               </li>
-            </Hover>
+            </Link>
           ))}
         </ul>
       </div>
