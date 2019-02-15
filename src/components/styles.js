@@ -1,6 +1,6 @@
 export const STYLES = {
   header: {
-    // boxSizing: 'border-box',
+    boxSizing: 'border-box',
     // display: 'grid',
     // gridTemplateColumns: 'repeat(4,1fr)',
     boxShadow: 'rgb(209, 209, 209) 0px 1px 2px 0px',
@@ -20,5 +20,8 @@ export const STYLES = {
   section: {
     display: 'inline',
     margin: '0 2em'
+  },
+  sectionActive: {
+    border: '2px solid black'
   }
 };

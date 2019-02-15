@@ -13,12 +13,22 @@ class Header extends React.Component {
       { heading: 'Contact', path: '/contact' }
     ];
   }
+
+  hover(obj) {
+    console.log('mouse!', obj);
+  }
   render() {
     return (
       <div style={STYLES.header}>
         <ul style={STYLES.headings}>
           {this.sectionHeadings.map((section, i) => (
-            <li key={i} style={STYLES.section}>
+            <li
+              id={i}
+              key={i}
+              style={{ ...STYLES.section, ...STYLES.sectionActive }}
+              onMouseEnter={() => this.hover(event.type)}
+              onMouseLeave={() => this.hover(event.target)}
+            >
               <Link to={section.path}>{section.heading}</Link>
             </li>
           ))}
