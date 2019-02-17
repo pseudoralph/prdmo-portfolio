@@ -12,8 +12,7 @@ module.exports = {
   ],
   output: {
     filename: 'app.bundle.js',
-    path: resolve(__dirname, 'build'),
-    publicPath: '/'
+    path: resolve(__dirname, 'build')
   },
   resolve: {
     extensions: ['.js', '.jsx']
@@ -28,7 +27,7 @@ module.exports = {
       filename: resolve(__dirname, 'build', 'index.html')
     })
   ],
-  devtool: '#source-map',
+  devtool: 'source-map',
   devServer: {
     hot: true,
     contentBase: resolve(__dirname, 'build')

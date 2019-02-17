@@ -32,6 +32,8 @@ Hierarchical overview:
 - launch dev environment using `npm run start`
 - navigate to `localhost:8080`
 
+This site is also accessible at [http://prdmo.s3-website-us-west-2.amazonaws.com/#/](http://prdmo.s3-website-us-west-2.amazonaws.com/#/)
+
 ## Technologies Used
 
 JS, React 16.8
