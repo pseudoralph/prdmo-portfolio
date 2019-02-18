@@ -1,25 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Active extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  isActive() {
+function Active(props) {
+  const isActive = () => {
     const presentURL = window.location.hash.replace(/\W/g, '');
-    return presentURL == this.props.children.toLocaleLowerCase();
-  }
-
-  render() {
-    console.log(this.isActive());
-    return (
-      <div>
-        {this.isActive ? '*' : ''}
-        {this.props.children}
-      </div>
-    );
-  }
+    return presentURL == props.children.toLocaleLowerCase();
+  };
+  return (
+    <div>
+      {isActive() ? '*' : ''}
+      {props.children}
+    </div>
+  );
 }
 
 Active.propTypes = {
