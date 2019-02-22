@@ -18,6 +18,13 @@ class Vignette extends React.Component {
     };
   }
 
+  slowFade() {
+    let time = 255;
+    return function() {
+      setInterval(() => console.log(time--), 250);
+    };
+  }
+
   unhide(event) {
     const delatRGB =
       128 + Math.abs(event.deltaY) < 255 ? 127 + Math.abs(event.deltaY) : 255;
