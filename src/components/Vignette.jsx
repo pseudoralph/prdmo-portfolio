@@ -5,7 +5,7 @@ class Vignette extends React.Component {
     super(props);
     this.state = {
       fastestScroll: 0,
-      hideBack: 0
+      fadeBackIn: 0
     };
     this.hiddenMessage = React.createRef();
 
@@ -20,7 +20,7 @@ class Vignette extends React.Component {
 
   unhide(event) {
     const delatRGB =
-      128 + Math.abs(event.deltaY) < 255 ? 128 + Math.abs(event.deltaY) : 255;
+      128 + Math.abs(event.deltaY) < 255 ? 127 + Math.abs(event.deltaY) : 255;
 
     if (delatRGB > this.state.fastestScroll) {
       this.setState({ fastestScroll: delatRGB });
