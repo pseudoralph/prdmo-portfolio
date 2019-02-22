@@ -6,10 +6,9 @@ import Hover from './Hover';
 
 function Header() {
   const sectionHeadings = [
-    { heading: 'Home', path: '/' },
-    { heading: 'Projects', path: '/projects' },
-    { heading: 'Blog', path: '/blog' },
-    { heading: 'Contact', path: '/contact' }
+    { heading: 'About', path: '/' },
+
+    { heading: 'Vignette', path: '/blog' }
   ];
 
   return (
