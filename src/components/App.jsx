@@ -2,11 +2,11 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Header from './Header';
 import Main from './Main';
-import Projects from './Projects';
 import Blog from './Blog';
-import Contact from './Contact';
 import Error404 from './Error404';
 import { POSTS } from './posts';
+// import Contact from './Contact';
+// import Projects from './Projects';
 
 class App extends React.Component {
   constructor(props) {

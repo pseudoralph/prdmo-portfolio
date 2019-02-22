@@ -7,16 +7,15 @@ import Hover from './Hover';
 function Header() {
   const sectionHeadings = [
     { heading: 'About', path: '/' },
-
     { heading: 'Vignette', path: '/blog' }
   ];
 
   return (
-    <div style={STYLES.header} className="header">
-      <ul style={STYLES.headings} className="headings">
+    <div style={STYLES.header.header} className="header">
+      <ul style={STYLES.header.headings} className="headings">
         {sectionHeadings.map((section, i) => (
-          <Link style={STYLES.sectionLink} to={section.path} key={i}>
-            <li style={STYLES.section} id={section.path}>
+          <Link style={STYLES.header.sectionLink} to={section.path} key={i}>
+            <li style={STYLES.header.section} id={section.path}>
               <Hover>{section.heading}</Hover>
             </li>
           </Link>

@@ -22,8 +22,8 @@ class Hover extends React.Component {
         onMouseLeave={this.toggleHover}
         style={
           this.state.hover
-            ? { ...STYLES.noHover, ...STYLES.withHover }
-            : { ...STYLES.noHover }
+            ? { ...STYLES.hover.noHover, ...STYLES.hover.withHover }
+            : { ...STYLES.hover.noHover }
         }
       >
         {this.props.children}

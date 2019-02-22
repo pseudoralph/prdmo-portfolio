@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { parseHTML } from './parseHTML';
+import { STYLES } from './styles';
 
 function Main(props) {
   const { title, body } = props.content[0].content;
@@ -8,10 +9,7 @@ function Main(props) {
   return (
     <div>
       <h3>{title}</h3>
-      <div
-        dangerouslySetInnerHTML={parseHTML(body)}
-        style={{ padding: '1em', lineHeight: '1.5em' }}
-      />
+      <div dangerouslySetInnerHTML={parseHTML(body)} style={STYLES.main.body} />
     </div>
   );
 }

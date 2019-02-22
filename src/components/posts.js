@@ -1,3 +1,4 @@
+/*eslint-disable */
 import { v4 } from 'uuid';
 
 export const POSTS = [
@@ -36,3 +37,5 @@ export const POSTS = [
     }
   }
 ];
+
+/*eslint-enable */
