@@ -7,7 +7,7 @@ import Hover from './Hover';
 function Header() {
   const sectionHeadings = [
     { heading: 'About', path: '/' },
-    { heading: 'Vignette', path: '/blog' }
+    { heading: 'Vignette', path: '/vignette' }
   ];
 
   return (

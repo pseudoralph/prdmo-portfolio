@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Header from './Header';
 import Main from './Main';
-import Blog from './Blog';
+import Vignette from './Vignette';
 import Error404 from './Error404';
 import { POSTS } from './posts';
 // import Contact from './Contact';
@@ -36,9 +36,9 @@ class App extends React.Component {
           />
 
           <Route
-            path="/blog"
+            path="/vignette"
             render={() => (
-              <Blog
+              <Vignette
                 content={this.state.contentDb.filter(
                   post => post.postId != 'INTRO'
                 )}

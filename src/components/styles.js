@@ -2,15 +2,14 @@ export const STYLES = {
   main: {
     body: { padding: '1em', lineHeight: '1.5em' }
   },
-
   header: {
     header: {
       boxSizing: 'border-box',
       position: 'sticky',
       width: '100vw',
       backgroundColor: 'rgb(78, 78, 78)',
-      padding: '1.3em 0 1em',
-      marginBottom: '1em'
+      padding: '1.3em 0 1em'
+      // marginBottom: '1em'
     },
     headings: {
       display: 'table',
@@ -27,7 +26,6 @@ export const STYLES = {
       margin: '.33em'
     }
   },
-
   hover: {
     noHover: {
       cursor: 'pointer',
@@ -38,7 +36,6 @@ export const STYLES = {
       background: 'rgb(86, 86, 86)'
     }
   },
-
   sectionActive: {
     borderBottom: '2px solid black'
   }
