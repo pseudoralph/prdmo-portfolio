@@ -6,20 +6,51 @@ import Projects from './Projects';
 import Blog from './Blog';
 import Contact from './Contact';
 import Error404 from './Error404';
+import { POSTS } from './posts';
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Main} />
-        <Route path="/projects" component={Projects} />
-        <Route path="/blog" component={Blog} />
-        <Route path="/contact" component={Contact} />
-        <Route component={Error404} />
-      </Switch>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      contentDb: POSTS
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <Header />
+
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Main
+                content={this.state.contentDb.filter(
+                  post => post.postId === 'INTRO'
+                )}
+              />
+            )}
+          />
+
+          <Route
+            path="/blog"
+            render={() => (
+              <Blog
+                content={this.state.contentDb.filter(
+                  post => post.postId != 'INTRO'
+                )}
+              />
+            )}
+          />
+
+          <Route component={Error404} />
+        </Switch>
+      </div>
+    );
+  }
 }
 
 export default App;
