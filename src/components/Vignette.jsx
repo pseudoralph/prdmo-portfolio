@@ -4,16 +4,27 @@ class Vignette extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      scrollCount: 0
+      fastestScroll: 0,
+      hideBack: 0
     };
     this.hiddenMessage = React.createRef();
 
-    this.style = { padding: '1em', background: 'grey', height: '100vh' };
+    this.style = {
+      padding: '1em',
+      background: 'rgb(128, 128, 128',
+      color: 'rgb(128, 128, 128',
+
+      height: '100vh'
+    };
   }
 
   unhide(event) {
-    // const deltaSpeed = setInterval(()=> )
-    const delatRGB = event.deltaY;
+    const delatRGB =
+      128 + Math.abs(event.deltaY) < 255 ? 128 + Math.abs(event.deltaY) : 255;
+
+    if (delatRGB > this.state.fastestScroll) {
+      this.setState({ fastestScroll: delatRGB });
+    }
 
     this.hiddenMessage.current.style.color = `rgb(${delatRGB},${delatRGB},${delatRGB})`;
   }
