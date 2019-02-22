@@ -4,56 +4,54 @@ class Vignette extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fastestScroll: 0,
-      fadeBackIn: 0,
-      rgbStartState: 128
+      fastestScroll: 0
     };
     this.hiddenMessage = React.createRef();
 
     this.style = {
       padding: '1em',
       background: 'rgb(128, 128, 128)',
-      color: `rgb(${this.state.rgbStartState}, ${this.state.rgbStartState}, ${
-        this.state.rgbStartState
-      })`,
+      color: 'white',
       height: '100vh'
     };
   }
 
-  slowFade() {
-    let start = 255;
-    let stop = 128;
-    // this.state.rgbStartState;
-
-    return () => {
-      let fader = setInterval(() => {
-        if (start > stop) {
-          return start--;
-        } else {
-          // this.setState({ fastestScroll: 0 });
-          clearInterval(fader);
-        }
-      }, 50);
-    };
-  }
-
   unhide(event) {
-    const delatRGB =
-      127 + Math.abs(event.deltaY / 4) < 255
-        ? 127 + Math.abs(event.deltaY / 4)
-        : 255;
+    const currentScrollSpeed = Math.abs(event.deltaY / 500);
 
-    if (delatRGB > this.state.fastestScroll) {
-      this.setState({ fastestScroll: delatRGB });
+    if (currentScrollSpeed > this.state.fastestScroll) {
+      this.setState({ fastestScroll: currentScrollSpeed });
+
+      setInterval(function(currentScrollSpeed) {
+        console.log('tick');
+        if (currentScrollSpeed > 0) {
+          const decreaseByInterval = currentScrollSpeed / 6;
+          this.hiddenMessage.current.style.opacity =
+            currentScrollSpeed - decreaseByInterval;
+        }
+      }, 1000);
     }
+    // if (event.deltaY > this.state.fastestScroll) {
+    //   this.setState({ fastestScroll: event.deltaY });
 
-    this.hiddenMessage.current.style.color = `rgb(${delatRGB},${delatRGB},${delatRGB})`;
+    //   let unhideMessageInterval = setInterval(() => {
+    //     if (this.hiddenMessage.current.style.opacity > 0) {
+    //       this.hiddenMessage.current.style.opacity =
+    //         opacityToReveal - revealPoints;
+    //     } else {
+    //       this.setState({ fastestScroll: 0 });
+    //       clearInterval(unhideMessageInterval);
+    //     }
+    //   }, 50);
+    // }
   }
 
   render() {
     return (
       <div onWheel={event => this.unhide(event)} style={this.style}>
-        <div ref={this.hiddenMessage}>Hi there</div>
+        <div ref={this.hiddenMessage} style={{ opacity: 0 }}>
+          Hi there
+        </div>
         <div />
       </div>
     );
