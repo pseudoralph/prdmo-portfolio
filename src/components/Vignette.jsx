@@ -14,43 +14,44 @@ class Vignette extends React.Component {
       color: 'white',
       height: '100vh'
     };
+
+    this.unhideTimer = null;
   }
 
   unhide(event) {
-    const currentScrollSpeed = Math.abs(event.deltaY / 500);
+    let currentScrollSpeed = Math.abs(event.deltaY / 300).toFixed(4);
 
     if (currentScrollSpeed > this.state.fastestScroll) {
       this.setState({ fastestScroll: currentScrollSpeed });
 
-      setInterval(function(currentScrollSpeed) {
-        console.log('tick');
-        if (currentScrollSpeed > 0) {
-          const decreaseByInterval = currentScrollSpeed / 6;
-          this.hiddenMessage.current.style.opacity =
-            currentScrollSpeed - decreaseByInterval;
-        }
-      }, 1000);
-    }
-    // if (event.deltaY > this.state.fastestScroll) {
-    //   this.setState({ fastestScroll: event.deltaY });
+      if (this.unhideTimer) {
+        clearInterval(this.unhideTimer);
+      }
 
-    //   let unhideMessageInterval = setInterval(() => {
-    //     if (this.hiddenMessage.current.style.opacity > 0) {
-    //       this.hiddenMessage.current.style.opacity =
-    //         opacityToReveal - revealPoints;
-    //     } else {
-    //       this.setState({ fastestScroll: 0 });
-    //       clearInterval(unhideMessageInterval);
-    //     }
-    //   }, 50);
-    // }
+      this.unhideTimer = setInterval(() => {
+        let fadeUnits = currentScrollSpeed / 20;
+
+        if (currentScrollSpeed > 0.05) {
+          currentScrollSpeed -= fadeUnits;
+          this.hiddenMessage.current.style.opacity = currentScrollSpeed;
+        } else {
+          this.hiddenMessage.current.style.opacity = 0;
+          this.setState({ fastestScroll: 0 });
+          clearInterval(this.unhideTimer);
+        }
+      }, 250);
+    }
   }
 
   render() {
     return (
       <div onWheel={event => this.unhide(event)} style={this.style}>
         <div ref={this.hiddenMessage} style={{ opacity: 0 }}>
-          Hi there
+          <h3>There's a hidden message here</h3>
+          <p>
+            Some things are meant to be ephemeral. This is getting harder and
+            harder to realize in our modern, digital age.
+          </p>
         </div>
         <div />
       </div>
