@@ -36,6 +36,14 @@ export const STYLES = {
       background: 'rgb(86, 86, 86)'
     }
   },
+  vignette: {
+    main: {
+      padding: '1em',
+      background: 'rgb(128, 128, 128)',
+      color: 'white',
+      height: '100vh'
+    }
+  },
   sectionActive: {
     borderBottom: '2px solid black'
   }

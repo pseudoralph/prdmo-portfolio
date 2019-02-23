@@ -7,9 +7,9 @@ function Main(props) {
   const { title, body } = props.content[0].content;
 
   return (
-    <div style={{ overflow: 'scroll' }}>
+    <div style={STYLES.main.body}>
       <h3>{title}</h3>
-      <div dangerouslySetInnerHTML={parseHTML(body)} style={STYLES.main.body} />
+      <div dangerouslySetInnerHTML={parseHTML(body)} />
     </div>
   );
 }

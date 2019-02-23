@@ -1,12 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { STYLES } from './styles';
 
 class Vignette extends React.Component {
   constructor(props) {
     super(props);
-
-    console.log(props.content[0]);
-
     this.state = {
       fastestScroll: 0
     };
