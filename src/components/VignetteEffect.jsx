@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { parseHTML } from './parseHTML';
 import { STYLES } from './styles';
 
-class Vignette extends React.Component {
+class VignetteEffect extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +14,10 @@ class Vignette extends React.Component {
   }
 
   unhide(event) {
-    let currentScrollSpeed = Math.abs(event.deltaY / 400).toFixed(3);
+    let currentScrollSpeed =
+      Math.abs(event.deltaY / 350).toFixed(3) > 1
+        ? 1
+        : Math.abs(event.deltaY / 350).toFixed(3);
 
     if (currentScrollSpeed > this.state.fastestScroll) {
       this.setState({ fastestScroll: currentScrollSpeed });
@@ -44,15 +48,16 @@ class Vignette extends React.Component {
     return (
       <div onWheel={event => this.unhide(event)} style={STYLES.vignette.main}>
         <div ref={this.hiddenMessage} style={{ opacity: 0 }}>
-          <h3>There's a hidden message here</h3>
-          <p>
-            Some things are meant to be ephemeral. This is getting harder and
-            harder to realize in our modern, digital age.
-          </p>
+          <h3>{this.props.post.title}</h3>
+          <div dangerouslySetInnerHTML={parseHTML(this.props.post.body)} />
         </div>
         <div />
       </div>
     );
   }
 }
-export default Vignette;
+
+VignetteEffect.propTypes = {
+  post: PropTypes.object
+};
+export default VignetteEffect;

@@ -5,8 +5,6 @@ import Main from './Main';
 import Vignette from './Vignette';
 import Error404 from './Error404';
 import { POSTS } from './posts';
-// import Contact from './Contact';
-// import Projects from './Projects';
 
 class App extends React.Component {
   constructor(props) {
