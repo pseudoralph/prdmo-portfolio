@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { parseHTML } from './parseHTML';
 import { STYLES } from './styles';
+import Hammer from 'hammerjs';
 
 class VignetteEffect extends React.Component {
   constructor(props) {
@@ -10,14 +11,21 @@ class VignetteEffect extends React.Component {
       fastestScroll: 0
     };
     this.hiddenMessage = React.createRef();
+    this.mobileTouchAware = React.createRef();
     this.activeUnhide = null;
+    // this.unhide = this.unhide.bind(this);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.activeUnhide);
+    this.hiddenMessage.current.style.opacity = 0;
   }
 
   unhide(event) {
     let currentScrollSpeed =
-      Math.abs(event.deltaY / 350).toFixed(3) > 1
+      Math.abs(event / 350).toFixed(3) > 1
         ? 1
-        : Math.abs(event.deltaY / 350).toFixed(3);
+        : Math.abs(event / 350).toFixed(3);
 
     if (currentScrollSpeed > this.state.fastestScroll) {
       this.setState({ fastestScroll: currentScrollSpeed });
@@ -44,9 +52,21 @@ class VignetteEffect extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const mobileSwipe = new Hammer(this.mobileTouchAware.current);
+    mobileSwipe.on('swipe', event => {
+      // console.log(event);
+      this.unhide(event.deltaX);
+    });
+  }
+
   render() {
     return (
-      <div onWheel={event => this.unhide(event)} style={STYLES.vignette.main}>
+      <div
+        onWheel={event => this.unhide(event.deltaY)}
+        style={STYLES.vignette.main}
+        ref={this.mobileTouchAware}
+      >
         <div ref={this.hiddenMessage} style={{ opacity: 0 }}>
           <h3>{this.props.post.title}</h3>
           <div dangerouslySetInnerHTML={parseHTML(this.props.post.body)} />
