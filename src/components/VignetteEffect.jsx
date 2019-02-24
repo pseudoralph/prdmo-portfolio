@@ -7,11 +7,10 @@ import Hammer from 'hammerjs';
 class VignetteEffect extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      fastestScroll: 0
-    };
+
     this.hiddenMessage = React.createRef();
     this.mobileTouchAware = React.createRef();
+    this.unhidden = 0;
     this.activeUnhide = null;
   }
 
@@ -20,42 +19,35 @@ class VignetteEffect extends React.Component {
     this.hiddenMessage.current.style.opacity = 0;
   }
 
-  unhide(event) {
-    let currentScrollSpeed =
-      Math.abs(event / 350).toFixed(3) > 1
-        ? 1
-        : Math.abs(event / 350).toFixed(3);
-
-    if (currentScrollSpeed > this.state.fastestScroll) {
-      this.setState({ fastestScroll: currentScrollSpeed });
-
-      if (this.activeUnhide) {
-        clearInterval(this.activeUnhide);
-      }
-
-      this.activeUnhide = setInterval(() => {
-        let fadeUnits = currentScrollSpeed / 20;
-
-        if (currentScrollSpeed > 0.025) {
-          currentScrollSpeed = Number.parseFloat(
-            currentScrollSpeed - fadeUnits
-          ).toFixed(3);
-
-          this.hiddenMessage.current.style.opacity = currentScrollSpeed;
-        } else {
-          this.hiddenMessage.current.style.opacity = 0;
-          this.setState({ fastestScroll: 0 });
-          clearInterval(this.activeUnhide);
-        }
-      }, 125);
-    }
-  }
-
   componentDidMount() {
     const mobileSwipe = new Hammer(this.mobileTouchAware.current);
     mobileSwipe.on('swipe', event => {
       this.unhide(event.deltaX);
     });
+  }
+
+  unhide(event) {
+    const swipeFactor = 300;
+    const revealThreshold = 15;
+
+    if (Math.abs(event) > this.unhidden + revealThreshold) {
+      clearInterval(this.activeUnhide);
+
+      this.unhidden = Math.abs(event);
+
+      this.activeUnhide = setInterval(() => {
+        if (this.unhidden > revealThreshold) {
+          this.unhidden -= this.unhidden / revealThreshold;
+
+          this.hiddenMessage.current.style.opacity = (
+            this.unhidden / swipeFactor
+          ).toFixed(3);
+        } else {
+          clearInterval(this.activeUnhide);
+          this.hiddenMessage.current.style.opacity = 0;
+        }
+      }, 75);
+    }
   }
 
   render() {
