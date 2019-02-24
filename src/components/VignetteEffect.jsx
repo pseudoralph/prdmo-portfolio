@@ -13,7 +13,6 @@ class VignetteEffect extends React.Component {
     this.hiddenMessage = React.createRef();
     this.mobileTouchAware = React.createRef();
     this.activeUnhide = null;
-    // this.unhide = this.unhide.bind(this);
   }
 
   componentWillUnmount() {
@@ -63,9 +62,9 @@ class VignetteEffect extends React.Component {
   render() {
     return (
       <div
-        onWheel={event => this.unhide(event.deltaY)}
         style={STYLES.vignette.main}
         ref={this.mobileTouchAware}
+        onWheel={event => this.unhide(event.deltaY)}
       >
         <div ref={this.hiddenMessage} style={{ opacity: 0 }}>
           <h3>{this.props.post.title}</h3>

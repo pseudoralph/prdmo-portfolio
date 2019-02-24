@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import VignetteEffect from './VignetteEffect';
-// import { STYLES } from './styles';
 
 function Vignette(props) {
   const { title, body } = props.content[0].content;
 
   return (
-    <div>
+    <div
+      className="vignette-outter-wrapper"
+      style={{ position: 'fixed', width: '100vw', marginTop: '2.5em' }}
+    >
       <VignetteEffect post={{ title, body }} />
     </div>
   );

@@ -6,7 +6,7 @@
 
 ## Description
 
-Vignette is a riff on a blog—a sort of mashup between a blog post and a snapchat. The purpose of a vignette is to create a piece of written content that exists on screen for a brief moment. In order to read a vignette, a user must interact with his or her computer or mobile device. This is done by scrolling the mouse/trackpad or swiping left or right. This will then reveal a message and slowly make that message disapper.
+Vignette is a riff on a blog—a sort of mashup between a blog post and a snapchat. The purpose of a vignette is to create a piece of written content that exists on screen for a brief moment. In order to read a vignette, a user must interact with the computer or mobile device. This is done by scrolling/swiping up or down. A message will be revealed and slowly disapear.
 
 ## Details
 

@@ -1,8 +1,7 @@
 import React from 'react';
+import Hover from './Hover';
 import { STYLES } from './styles';
 import { Link } from 'react-router-dom';
-import Hover from './Hover';
-// import Active from './Active';
 
 function Header() {
   const sectionHeadings = [
