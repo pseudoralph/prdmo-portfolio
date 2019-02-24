@@ -16,8 +16,7 @@ export const POSTS = [
     content: {
       title: `There's a hidden message here`,
       body: `<p>
-        Some things are meant to be ephemeral. This is getting harder and
-        harder to realize in our modern, digital age.
+        Some things are meant to be ephemeral. Achieving ephemerality is becoming increasingly difficult in our modern day.
       </p>`
     }
   }
