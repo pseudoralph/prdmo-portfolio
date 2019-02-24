@@ -1,6 +1,7 @@
 import React from 'react';
 import mobile from './assets/img/gesture-swipe-horizontal.svg';
 import desktop from './assets/img/gesture-swipe-vertical.svg';
+import { STYLES } from './styles';
 
 function userAgent() {
   const platform = /(intel)/gi.test(navigator.userAgent)
@@ -12,16 +13,7 @@ function userAgent() {
 
 function UseInstructions() {
   return (
-    <div
-      style={{
-        border: '1px solid black',
-        display: 'table',
-        margin: '1.5em auto',
-        textAlign: 'center',
-        padding: '.8em 1em',
-        borderRadius: '5px'
-      }}
-    >
+    <div style={STYLES.instructions}>
       <h3> {userAgent().device} users:</h3>
       <img
         src={userAgent().device === 'Desktop' ? desktop : mobile}

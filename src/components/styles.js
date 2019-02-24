@@ -2,6 +2,14 @@ export const STYLES = {
   main: {
     body: { padding: '1em', lineHeight: '1.5em', marginTop: '2.5em' }
   },
+  instructions: {
+    border: '1px solid black',
+    display: 'table',
+    margin: '1.5em auto',
+    textAlign: 'center',
+    padding: '.8em 1em',
+    borderRadius: '5px'
+  },
   header: {
     header: {
       zIndex: '999',

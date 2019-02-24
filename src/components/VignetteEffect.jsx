@@ -54,7 +54,6 @@ class VignetteEffect extends React.Component {
   componentDidMount() {
     const mobileSwipe = new Hammer(this.mobileTouchAware.current);
     mobileSwipe.on('swipe', event => {
-      // console.log(event);
       this.unhide(event.deltaX);
     });
   }
